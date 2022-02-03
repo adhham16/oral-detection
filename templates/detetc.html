@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{{ data2 }}
+
+ {% for  i in data2 %}
+     {{ i.lesionType }}
+       <h5 id="response">{{ i.diagnosis }}</h5>
+
+ {% endfor %}
+{% for  y in data %}
+     {{ y.firstname }}
+
+ {% endfor %}
+</html>

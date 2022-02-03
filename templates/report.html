@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static "/images/favicon.png" %}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.7.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+         background-image: url("{% static "/images/cover2.png" %}");
+        }
+        #nav{
+
+              font-family: "Open Sans Semibold" ;
+        }
+        .navbar-brand{
+            color: black;
+            font-family: "Berlin Sans FB";
+        }
+        #heading{
+            font-family: sans-serif;
+            color: gray;
+            text-shadow: 1px 1px 1px black;
+            padding: 5px;
+        }
+        #subheading{
+            font-family: sans-serif;
+            color: gray;
+            text-shadow: 1px 1px 1px black;
+            padding: 10px;
+        }
+        .label,#response{
+            color: black;
+            font-family: sans-serif;
+            font-size: medium;
+            {#text-shadow: 1px 1px 3px black;#}
+        }
+        #response{
+            color: black;
+            font-family: sans-serif;
+            font-size: medium;
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+         <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header ">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">Oral Detective</a>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <<ul class="nav navbar-nav navbar-right">
+                  <li id="nav"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                  <li id="nav"><a href="/OralDetective/admin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5">
+                        <h2 class="heading-section">################</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center" >
+                    <div class="col-lg-10">
+                            <div class="row">
+                                <div class="col-md-5 col-lg-8">
+                                    {% for  i in data %}
+                                    <div class="contact-wrap w-100 p-md-5 p-4">
+                                        <div id="form-message-warning" class="mb-3"></div>
+                                        <h1 id="heading">Oral Detective Patient's Details</h1>
+                                            <div class="row" style="background-color: aliceblue;padding: 10px;border-radius: 4px">
+                                                <h2 id="subheading">Patient's Details</h2><hr  style="height:2px;border-width:0;color:gray;background-color:gray">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="fullname">Full Name :</label>
+                                                        <h5 id="response">{{i.firstname}} {{ i.lastname }}</h5>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="address">address</label>
+                                                        <h5 id="response">{{ i.address1}},{{ i.address2}},{{ i.city}},{{ i.country}}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="dob">Date Of Birth :</label>
+                                                        <h5 id="response">{{ i.dob }}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="gender">Gender :</label>
+                                                        <h5 id="response">{{ i.gender }} </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="email">Email :</label>
+                                                        <h5 id="response">{{ i.email }}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="Reason">Reason for testing : </label>
+                                                        <h5 id="response">{{ i.reason }}</h5>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                    </div>
+                                    <div class="contact-wrap w-100 p-md-5 p-4" style="padding-bottom: 10px;">
+                                        <div id="form-message-warning" class="mb-3" style="padding: 2px;"></div>
+                                            <div class="row" style="background-color: aliceblue;padding: 10px;border-radius: 4px">
+
+                                                <h2 id="subheading">Report Details</h2><hr  style="height:2px;border-width:0;color:gray;background-color:gray">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="image">Attached image: </label>
+                                                        <img src="{{ i.image.url }}" style="height: 500px;width: 500px;">
+
+                                                    </div>
+                                                </div>
+                                        {% endfor %}
+                                                {% for  y in data2 %}
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="fullname">Report No: </label>
+                                                        <h5 id="response">{{ y.id }}</h5>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="datetime">Date & Time: </label>
+                                                        <h5 id="response">{{ y.createdDate }}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="diagnosis">Clinical Diagnosis:</label>
+                                                        <h5 id="response">{{ y.diagnosis }}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="lesiontype">Lesion type :</label>
+                                                        <h5 id="response">{{ y.lesionType }}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="remarks">Remarks :</label>
+                                                        <h5 id="response">empty</h5>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                                {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	    </section>
+
+</body>
+</html>

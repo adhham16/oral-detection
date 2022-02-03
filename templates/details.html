@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static "/images/favicon.png" %}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.7.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+         background-image: url("{% static "/images/cover2.png" %}");
+        }
+        #nav{
+
+              font-family: "Open Sans Semibold" ;
+        }
+        .navbar-brand{
+            color: black;
+            font-family: "Berlin Sans FB";
+        }
+        .label{
+            font-family: sans-serif;
+            font-size: medium;
+            text-shadow: 1px 1px 3px black;
+        }
+        #heading{
+            font-family: sans-serif;
+            color: gray;
+            text-shadow: 1px 1px 1px black;
+        }
+        #subheading{
+            font-family: sans-serif;
+            color: gray;
+            text-shadow: 1px 1px 1px black;
+        }
+    </style>
+</head>
+<body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header ">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="">Oral Detective</a>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <<ul class="nav navbar-nav navbar-right">
+                  <li id="nav"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                  <li id="nav"><a href="/OralDetective/admin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5">
+                        <h2 class="heading-section">Contact Form #08</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                            <div class="row">
+                                <div class="col-md-9 col-lg-7">
+                                    <div class="contact-wrap w-100 p-md-5 p-4">
+                                        <div id="form-message-warning" class="mb-4"></div>
+                                        <form method="POST" id="details" class="contactForm" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            {% load widget_tweaks %}
+                                            <div class="row">
+                                                <h1 id="heading">Oral Detective Patient's Details</h1>
+                                                <h2 id="subheading">Please enter the details</h2>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="firstname">First Name :</label>
+                                                        {{ form.firstname | add_class:"form-control" | attr:"placeholder:First Name"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="lastname">Last Name :</label>
+                                                        {{ form.lastname | add_class:"form-control" | attr:"placeholder:Last Name"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="dob">Date Of Birth :</label>
+                                                        {{ form.dob | add_class:"form-control" | attr:"type:date"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="gender">Gender :</label>
+                                                        {{ form.gender | add_class:"form-control" | attr:"placeholder:Gender"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="address1">Address 1 :</label>
+                                                        {{ form.address1 | add_class:"form-control" | attr:"placeholder:No:123"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="address2">Address 2 :</label>
+                                                        {{ form.address2 | add_class:"form-control" | attr:"placeholder:street name"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="city">City :</label>
+                                                        {{ form.city | add_class:"form-control" | attr:"placeholder:City"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="country">Country :</label>
+                                                       {{ form.country | add_class:"form-control" | attr:"placeholder:Country"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="email">Email :</label>
+                                                        {{ form.email | add_class:"form-control" | attr:"placeholder:abc@oraldetective.com"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="Reason">Reason for testing : </label>
+                                                             {{ form.reason | add_class:"form-control"| attr:"type:text"| attr:"placeholder:Reason"|remove_attr:"cols"|remove_attr:"rows"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="label" for="image">Attach your image :</label>
+                                                       {{ form.image |add_class:"form-control"}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+
+                                                        <input type="submit" value="Submit" class="btn btn-primary">
+                                                        <div class="submitting"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	    </section>
+</body>
+</html>

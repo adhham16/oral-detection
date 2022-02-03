@@ -1,0 +1,4 @@
+# vendor and assets
+node_modules
+/venv
+/.idea
